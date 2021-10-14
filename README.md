@@ -97,16 +97,16 @@ We are just going to summarize our one result for now.
 
 We can then open `4.hAMRonization/amr_summary.html` in our browser to explore our AMR predictions (again this is at its most useful when running multiple samples)
 
-## 6. Simple Automation
+## 5. Simple Automation
 
 We don't want to type in all these commands every time, ideally we want to automate them so they all happen themselves.
 One way we can do this is by writing a "shell script" to do this.
-
-I've created an example shell script in `6.simple_automation/full_run.sh` that will redo all the commands after setting up your conda environment
+ 
+I've created an example shell script in `5.simple_automation/full_run.sh` that will redo all the commands after setting up your conda environment and create outputs in `5.simple_automation/`
 
 This is just the commands above but with one little trick to store the database and amrfinder versions in variables and give them directly to `hAMRonization`.
 
-## 7. Workflows 
+## 6. Workflows 
 
 Workflows offer a much safer and more efficient way to run a series of commands on a number of samples.
 There are many workflow languages but we are going to use [snakemake](snakemake.readthedocs.io/) today.
@@ -118,7 +118,7 @@ However there are many more workflow managers and "best-practice" workflows:
 - [Snakemake](snakemake.readthedocs.io) isn't too hard if you know a bit of python and shell but the mental model (working backwards from outputs) can be a little challenging. Best practices snakemake workflows are avaiable [here](https://github.com/snakemake-workflows).
 - [NextFlow](nextflow.io/) uses a language less people are familiar with (called groovy) but works very similar to simple "UNIX" shell pipes (connecting outputs from tool A to the input of tool B). Nextflow best practice workflows are created and stored by [nf-core](https://nf-co.re/).
 
-You can see a simple snakemake workflow in `7.workflows/Snakemake`.
+You can see a simple snakemake workflow in `6.workflows/Snakemake`.
 This will rerun all the results so far and repeat them for `sampleB`
 
 To run this you need to install snakemake:
@@ -127,13 +127,13 @@ To run this you need to install snakemake:
 
 Then execute:
 
-    snakemake --snakefile 7.workflows/Snakemake --cores 2
+    snakemake --snakefile 6.workflows/Snakemake --cores 2
 
-This will result in a nice tidy set of folders under `7.workflows/` with a summary
-file of the AMR genes predicted in both samples `7.workflows/amr_summary.html`
+This will result in a nice tidy set of folders under `6.workflows/` with a summary
+file of the AMR genes predicted in both samples `6.workflows/amr_summary.html`
 
 
-	7.workflows/
+	6.workflows/
 	├── amr_summary.html
 	├── sampleA
 	│   ├── 1.quality_control

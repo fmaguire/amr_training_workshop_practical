@@ -2,13 +2,13 @@ IDS, = glob_wildcards("0.raw_data/{id}_R1.fq.gz")
 
 rule all:
     input:
-        "7.workflows/amr_summary.html"
+        "6.workflows/amr_summary.html"
 
 rule summarize:
     input:
-        expand("7.workflows/{id}/4.hAMRonization/amr_summary.html", id=IDS),
+        expand("6.workflows/{id}/4.hAMRonization/amr_summary.html", id=IDS),
     output:
-        "7.workflows/amr_summary.html"
+        "6.workflows/amr_summary.html"
     shell:
         """
         hamronize summarize --summary_type interactive {input} > {output}
@@ -16,9 +16,9 @@ rule summarize:
         
 rule hAMRonize:
     input:
-        "7.workflows/{id}/3.amr_gene_detection/amrfinderplus_results.tsv"
+        "6.workflows/{id}/3.amr_gene_detection/amrfinderplus_results.tsv"
     output:
-        "7.workflows/{id}/4.hAMRonization/amr_summary.html"
+        "6.workflows/{id}/4.hAMRonization/amr_summary.html"
     params:
         name = "{id}"
     shell:
@@ -29,11 +29,11 @@ rule hAMRonize:
 
 rule amrfinderplus:
     input:
-        "7.workflows/{id}/2.assembly/contigs.fa"
+        "6.workflows/{id}/2.assembly/contigs.fa"
     output:
-        "7.workflows/{id}/3.amr_gene_detection/amrfinderplus_results.tsv"
+        "6.workflows/{id}/3.amr_gene_detection/amrfinderplus_results.tsv"
     log:
-        "7.workflows/{id}/3.amr_gene_detection/amrfinderplus.log"
+        "6.workflows/{id}/3.amr_gene_detection/amrfinderplus.log"
     shell:
         """
         amrfinder --update > {log} 2>&1
@@ -42,14 +42,14 @@ rule amrfinderplus:
 
 rule shovill:
     input:
-        R1 = "7.workflows/{id}/1.quality_control/{id}_R1_trimmed.fq.gz",
-        R2 = "7.workflows/{id}/1.quality_control/{id}_R2_trimmed.fq.gz"
+        R1 = "6.workflows/{id}/1.quality_control/{id}_R1_trimmed.fq.gz",
+        R2 = "6.workflows/{id}/1.quality_control/{id}_R2_trimmed.fq.gz"
     output:
-        "7.workflows/{id}/2.assembly/contigs.fa"
+        "6.workflows/{id}/2.assembly/contigs.fa"
     params:
-        prefix = "7.workflows/{id}/2.assembly"
+        prefix = "6.workflows/{id}/2.assembly"
     log:
-        "7.workflows/{id}/2.assembly/assembly.log"
+        "6.workflows/{id}/2.assembly/assembly.log"
     shell:
         """
         shovill --R1 {input.R1} --R2 {input.R2} --outdir {params.prefix} --force > {log} 2>&1
@@ -60,12 +60,12 @@ rule fastp:
         R1 = "0.raw_data/{id}_R1.fq.gz",
         R2 = "0.raw_data/{id}_R2.fq.gz"
     output:
-        R1 = "7.workflows/{id}/1.quality_control/{id}_R1_trimmed.fq.gz",
-        R2 = "7.workflows/{id}/1.quality_control/{id}_R2_trimmed.fq.gz",
-        html = "7.workflows/{id}/1.quality_control/fastp.html",
-        json = "7.workflows/{id}/1.quality_control/fastp.json"
+        R1 = "6.workflows/{id}/1.quality_control/{id}_R1_trimmed.fq.gz",
+        R2 = "6.workflows/{id}/1.quality_control/{id}_R2_trimmed.fq.gz",
+        html = "6.workflows/{id}/1.quality_control/fastp.html",
+        json = "6.workflows/{id}/1.quality_control/fastp.json"
     log:
-        "7.workflows/{id}/1.quality_control/fastp.log"
+        "6.workflows/{id}/1.quality_control/fastp.log"
     shell:
         """
         fastp --in1 {input.R1} --in2 {input.R2} --out1 {output.R1} --out2 {output.R2} --json {output.json} --html {output.html} > {log} 2>&1
