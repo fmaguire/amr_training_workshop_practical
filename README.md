@@ -4,7 +4,7 @@ This repository contains all the files and instructions presented in the lecture
 This procedure will be different depending on the exact type of genomics sequencing you have performed.
 The examples here will work for short (100-250bp) paired-end Illumina reads from a bacterial genome.
 
-## Setting up
+## 0. Setting up
 
 First thing you need is a UNIX shell this can be accessed via a "terminal" and can be found on 
 Mac OSX, Windows Subsystem Linux, or a Linux operating system.
@@ -23,7 +23,7 @@ Then we are going to activate this `amr` environment, this means the computer wi
 
     conda activate amr
 
-## Quality Control
+## 1. Quality Control
 
 There are many parts to good quality control for AMR genomics.
 Today we are only going to focus on checking the raw reads and trimming them.
@@ -35,7 +35,7 @@ To check the reads and do some trimming we are going to use `fastp`:
 
 We can then open `1.quality_control/fastp.html` in our browser and check the before and after quality of our reads.
 
-## Assembly
+## 2. Assembly
 
 To assemble our reads into contigs we will use [shovill](https://github.com/tseemann/shovill).
 Shovill is a handy tool as it does a lot of things automatically for us and produces a decent genome assembly relatively quickly (we can even use the `--trim` option to have shovill do the read trimming for us as well).
@@ -45,7 +45,7 @@ Shovill is a handy tool as it does a lot of things automatically for us and prod
 Assuming everything went to plan, this will create a corrected genome assembly.
 You can find this as a fasta file that contains all the genomic contigs (`2.assembly/contigs.fa`)
 
-## AMR Gene Prediction
+## 3. AMR Gene Prediction
 
 We are going to use [AMRFinderPlus](https://www.ncbi.nlm.nih.gov/pathogens/antimicrobial-resistance/AMRFinder/) to predict whether there are any AMR genes in our assembled contigs.
 See Mike Feldgarden's lecture today for details about how tools like this work.
@@ -66,7 +66,7 @@ You can open this file in any spreadsheet software (such as excel or libreoffice
 
 You'll find there are 8 different AMR genes predicted in our assembly by AMRFinderPlus.
 
-## Harmonising AMR Prediction Results
+## 4. hAMRonizing Prediction Results
 
 There are many AMR prediction tools all of which have different incompatible outputs.
 This makes comparing the performance of different tools difficult. It also makes it hard to change tools because
@@ -97,7 +97,7 @@ We are just going to summarize our one result for now.
 
 We can then open `4.hAMRonization/amr_summary.html` in our browser to explore our AMR predictions (again this is at its most useful when running multiple samples)
 
-## Simple Automation
+## 6. Simple Automation
 
 We don't want to type in all these commands every time, ideally we want to automate them so they all happen themselves.
 One way we can do this is by writing a "shell script" to do this.
@@ -106,7 +106,7 @@ I've created an example shell script in `6.simple_automation/full_run.sh` that w
 
 This is just the commands above but with one little trick to store the database and amrfinder versions in variables and give them directly to `hAMRonization`.
 
-## Workflows 
+## 7. Workflows 
 
 Workflows offer a much safer and more efficient way to run a series of commands on a number of samples.
 There are many workflow languages but we are going to use [snakemake](snakemake.readthedocs.io/) today.
