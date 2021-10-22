@@ -118,7 +118,7 @@ However there are many more workflow managers and "best-practice" workflows:
 - [Snakemake](snakemake.readthedocs.io) isn't too hard if you know a bit of python and shell but the mental model (working backwards from outputs) can be a little challenging. Best practices snakemake workflows are avaiable [here](https://github.com/snakemake-workflows).
 - [NextFlow](nextflow.io/) uses a language less people are familiar with (called groovy) but works very similar to simple "UNIX" shell pipes (connecting outputs from tool A to the input of tool B). Nextflow best practice workflows are created and stored by [nf-core](https://nf-co.re/).
 
-You can see a simple snakemake workflow in `6.workflows/Snakemake`.
+You can see a simple snakemake workflow in `6a.workflow_snakemake/Snakemake`.
 This will rerun all the results so far and repeat them for `sampleB`
 
 To run this you need to install snakemake:
@@ -127,13 +127,13 @@ To run this you need to install snakemake:
 
 Then execute:
 
-    snakemake --snakefile 6.workflows/Snakemake --cores 2
+    snakemake --snakefile 6a.workflow_snakemake/Snakemake --cores 2
 
 This will result in a nice tidy set of folders under `6.workflows/` with a summary
 file of the AMR genes predicted in both samples `6.workflows/amr_summary.html`
 
 
-	6.workflows/
+	6a.workflow_snakemake/
 	├── amr_summary.html
 	├── sampleA
 	│   ├── 1.quality_control
@@ -159,3 +159,21 @@ file of the AMR genes predicted in both samples `6.workflows/amr_summary.html`
 
 If you try and run this snakemake command again it will only run for any missing
 files! Which is handy when a computer dies or you have a bug and need to restart your analysis.
+
+To show you how you would implement this in nextflow too, there is a nextflow workflow 
+
+To run this you need to get nextflow:
+
+    curl -s https://get.nextflow.io | bash 
+
+This will create a binary in your repository called `nextflow`.
+
+You can then execute the premade nextflow workflow in `6b.workflow_nextflow/nextflow.nf` using
+
+    ./nextflow run 6b.workflow_nextflow/nextflow.nf -resume
+
+This will then use nextflow instead of snakemake to execute all of the analysis steps on SampleA and SampleB.
+
+I recommend comparing the syntax of the nextflow and snakemake workflows to see which one you prefer (as that may help guide which workflow manager you use in your own work!).
+
+

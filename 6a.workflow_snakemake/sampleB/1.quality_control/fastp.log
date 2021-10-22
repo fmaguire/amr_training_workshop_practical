@@ -1,0 +1,41 @@
+Read1 before filtering:
+total reads: 1330
+total bases: 332500
+Q20 bases: 317434(95.4689%)
+Q30 bases: 303459(91.2659%)
+
+Read2 before filtering:
+total reads: 1330
+total bases: 332500
+Q20 bases: 287267(86.3961%)
+Q30 bases: 254602(76.572%)
+
+Read1 after filtering:
+total reads: 1330
+total bases: 332500
+Q20 bases: 317434(95.4689%)
+Q30 bases: 303459(91.2659%)
+
+Read2 after filtering:
+total reads: 1330
+total bases: 332500
+Q20 bases: 287267(86.3961%)
+Q30 bases: 254602(76.572%)
+
+Filtering result:
+reads passed filter: 2660
+reads failed due to low quality: 0
+reads failed due to too many N: 0
+reads failed due to too short: 0
+reads with adapter trimmed: 0
+bases trimmed due to adapters: 0
+
+Duplication rate: 0%
+
+Insert size peak (evaluated by paired-end reads): 297
+
+JSON report: 6a.workflow_snakemake/sampleB/1.quality_control/fastp.json
+HTML report: 6a.workflow_snakemake/sampleB/1.quality_control/fastp.html
+
+fastp --in1 0.raw_data/sampleB_R1.fq.gz --in2 0.raw_data/sampleB_R2.fq.gz --out1 6a.workflow_snakemake/sampleB/1.quality_control/sampleB_R1_trimmed.fq.gz --out2 6a.workflow_snakemake/sampleB/1.quality_control/sampleB_R2_trimmed.fq.gz --json 6a.workflow_snakemake/sampleB/1.quality_control/fastp.json --html 6a.workflow_snakemake/sampleB/1.quality_control/fastp.html 
+fastp v0.23.0, time used: 1 seconds

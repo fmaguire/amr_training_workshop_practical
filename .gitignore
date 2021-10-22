@@ -1,4 +1,4 @@
 .snakemake
 work/
-.nextflow
+.nextflow*
 nextflow

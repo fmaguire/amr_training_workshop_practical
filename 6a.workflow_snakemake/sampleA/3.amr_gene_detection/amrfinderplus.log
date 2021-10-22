@@ -1,0 +1,20 @@
+Running: amrfinder --update
+Software directory: '/home/fin/miniconda3/envs/amr/bin/'
+Software version: 3.10.16
+Running: /home/fin/miniconda3/envs/amr/bin/amrfinder_update -d /home/fin/miniconda3/envs/amr/share/amrfinderplus/data
+Looking up databases at https://ftp.ncbi.nlm.nih.gov/pathogen/Antimicrobial_resistance/AMRFinderPlus/database/
+[1;33mWARNING: '/home/fin/miniconda3/envs/amr/share/amrfinderplus/data/2021-09-30.1/' contains the latest version: 2021-09-30.1
+Skipping update, use amrfinder --force_update to overwrite the existing database
+[0m
+Database directory: '/home/fin/miniconda3/envs/amr/share/amrfinderplus/data/2021-09-30.1'
+Database version: 2021-09-30.1
+Running: amrfinder --nucleotide 6a.workflow_snakemake/sampleA/2.assembly/contigs.fa --output 6a.workflow_snakemake/sampleA/3.amr_gene_detection/amrfinderplus_results.tsv
+Software directory: '/home/fin/miniconda3/envs/amr/bin/'
+Software version: 3.10.16
+Database directory: '/home/fin/miniconda3/envs/amr/share/amrfinderplus/data/2021-09-30.1'
+Database version: 2021-09-30.1
+AMRFinder translated nucleotide search
+  - include -O ORGANISM, --organism ORGANISM option to add mutation searches and suppress common proteins
+Running blastx...
+Making report...
+AMRFinder took 10 seconds to complete
