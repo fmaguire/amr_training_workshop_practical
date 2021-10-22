@@ -1,2 +1,0 @@
-Protein identifier	Contig id	Start	Stop	Strand	Gene symbol	Sequence name	Scope	Element type	Element subtype	Class	Subclass	Method	Target length	Reference sequence length	% Coverage of reference sequence	% Identity to reference sequence	Alignment length	Accession of closest sequence	Name of closest sequence	HMM id	HMM description
-NA	contig00001	3140	4762	-	mcr-1.2	phosphoethanolamine--lipid A transferase MCR-1.2	core	AMR	AMR	COLISTIN	COLISTIN	ALLELEX	541	541	100.00	100.00	541	WP_065274078.1	phosphoethanolamine--lipid A transferase MCR-1.2	NA	NA
